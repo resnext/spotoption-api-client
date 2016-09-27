@@ -1,0 +1,10 @@
+composer.phar
+/vendor/
+
+# This package is simple libraby, we should not commit composer.lock
+composer.lock
+
+# JetBrains IDE files
+.idea/
+
+test.*.php
