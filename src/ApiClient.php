@@ -61,7 +61,7 @@ class ApiClient implements LoggerAwareInterface
     public function getCountries()
     {
         $data = [
-            'MODULE'        => 'Countries',
+            'MODULE'        => 'Country',
             'COMMAND'       => 'view',
         ];
 
