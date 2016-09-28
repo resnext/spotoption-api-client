@@ -55,13 +55,18 @@ class ApiClient implements LoggerAwareInterface
         $this->logger = $logger;
     }
 
+    /**
+     * @return GetCountriesResponse
+     */
     public function getCountries()
     {
         $data = [
             'MODULE'        => 'Countries',
             'COMMAND'       => 'view',
         ];
+
         $payload = new Payload($this->request($data));
+
         return new GetCountriesResponse($payload);
     }
 

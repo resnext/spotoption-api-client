@@ -59,7 +59,25 @@ class Response
             case self::ERROR_COULD_NOT_VALIDATE_IP: {
                 throw new NotWhitelistedIpException($this, "Not whitelisted IP");
             }
-            default: return false;
+            default: {
+                return false;
+            }
         }
+    }
+
+    /**
+     * This function is hack for crazy SpotOption responses. Some simple fields can be string or array with single value.
+     * For example: ISO code of country can be returned as array. What does it mean? Country can have two codes?
+     * But sometimes this field can be returned as string.
+     * So, for this cases we need force convert array to string for some fields.
+     *
+     * @param $data
+     *
+     * @return string
+     */
+    protected static function safeArrayToString($data)
+    {
+
+        return is_array($data) ? array_shift($data) : $data;
     }
 }
