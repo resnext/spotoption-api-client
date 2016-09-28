@@ -37,3 +37,12 @@ $apiClient = new \SpotOption\ApiClient(<API_URL>, <API_USERNAME>, <API_PASSWORD>
     'httpClient' => $httpClient,
 ]);
 ```
+
+## Countries retrieving
+
+```php
+/** @var \SpotOption\Response\GetCountriesResponse $response */
+$response = $this->apiClient->getCountries();
+/** @var \SpotOption\Entities\Country[] $countries */
+$countries = $response->getData();
+```
