@@ -5,6 +5,8 @@ namespace SpotOption;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use GuzzleHttp;
+use SpotOption\Requests\AddCustomerRequest;
+use SpotOption\Responses\AddCustomerResponse;
 use SpotOption\Responses\GetCountriesResponse;
 
 class ApiClient implements LoggerAwareInterface
@@ -61,13 +63,43 @@ class ApiClient implements LoggerAwareInterface
     public function getCountries()
     {
         $data = [
-            'MODULE'        => 'Country',
-            'COMMAND'       => 'view',
+            'MODULE'  => 'Country',
+            'COMMAND' => 'view',
         ];
 
         $payload = new Payload($this->request($data));
 
         return new GetCountriesResponse($payload);
+    }
+
+
+    public function addCustomer(AddCustomerRequest $request)
+    {
+        $data = [
+            'MODULE'        => 'Customer',
+            'COMMAND'       => 'add',
+            'FirstName' => $request->getFirstName(),
+            'LastName' => $request->getLastName(),
+            'gender' => $request->getGender(),
+            'email' => $request->getEmail(),
+            'Phone' => $request->getPhone(),
+            'Country' => $request->getCountry(),
+            'password' => $request->getPassword(),
+            'currency' => $request->getCurrency(),
+            'campaignId' => $request->getCampaignId(),
+            'subCampaign' => $request->getSubCampaign(),
+            'subCampaignId' => $request->getSubCampaignId(),
+            'birthday' => $request->getBirthday(),
+            'referLink' => $request->getReferLink(),
+            'a_aid' => $request->getAAid(),
+            'a_bid' => $request->getABid(),
+            'a_cid' => $request->getACid(),
+            'regIP' => $request->getRegistrationIpAddress(),
+        ];
+
+        $payload = new Payload($this->request($data));
+
+        return new AddCustomerResponse($payload);
     }
 
     /**
