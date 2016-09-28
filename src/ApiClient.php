@@ -87,12 +87,11 @@ class ApiClient implements LoggerAwareInterface
     {
         $url = rtrim($this->url, '?');
         $this->sign($data);
-        $url .= '?'.http_build_query($data);
         try {
-            return (string) $this->getHttpClient()->get($url, [
+            return (string) $this->getHttpClient()->post($url, [
+                GuzzleHttp\RequestOptions::FORM_PARAMS => $data,
                 GuzzleHttp\RequestOptions::HEADERS => [
-                    'User-Agent' => 'SpotOption API Client',
-//                    'Accept'     => 'application/xml',
+                    'User-Agent' => 'ResNext / SpotOption API Client',
                 ]
             ])->getBody();
         } catch (GuzzleHttp\Exception\ConnectException $e) {

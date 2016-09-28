@@ -2,6 +2,8 @@
 
 namespace SpotOption;
 
+use SpotOption\Exceptions\NotWhitelistedIpException;
+
 class Response
 {
     protected $payload;
@@ -13,6 +15,8 @@ class Response
     const FIELD_ERRORS = 'errors';
 
     const STATUS_FAILED = 'failed';
+
+    const ERROR_COULD_NOT_VALIDATE_IP = 'couldNotValidateIP';
 
     protected $errors = [];
 
@@ -37,14 +41,25 @@ class Response
 
             foreach ($data[self::FIELD_ERRORS] as $error) {
                 $this->errors[] = $error;
+
+                $this->processKnownError($error);
             }
 
-            throw new ServerException($this, "SpotOption operation failed.");
+            throw new ServerException($this, "Unknown SpotOption error.");
         }
     }
 
     public function getErrors()
     {
         return $this->errors;
+    }
+
+    protected function processKnownError($error) {
+        switch ($error) {
+            case self::ERROR_COULD_NOT_VALIDATE_IP: {
+                throw new NotWhitelistedIpException($this, "Not whitelisted IP");
+            }
+            default: return false;
+        }
     }
 }
