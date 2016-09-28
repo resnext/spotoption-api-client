@@ -35,17 +35,12 @@ class Response
     protected function init()
     {
         $data = $this->payload->getData();
-
         // Process failed operation
         if ($data[self::FIELD_OPERATION_STATUS] == self::STATUS_FAILED) {
-
             foreach ($data[self::FIELD_ERRORS] as $error) {
                 $this->errors[] = $error;
-
-                $this->processKnownError($error);
+                $this->processError($error);
             }
-
-            throw new ServerException($this, "Unknown SpotOption error.");
         }
     }
 
@@ -54,13 +49,13 @@ class Response
         return $this->errors;
     }
 
-    protected function processKnownError($error) {
+    protected function processError($error) {
         switch ($error) {
             case self::ERROR_COULD_NOT_VALIDATE_IP: {
                 throw new NotWhitelistedIpException($this, "Not whitelisted IP");
             }
             default: {
-                return false;
+                throw new ServerException($this, "Unknown SpotOption error. " . $error);
             }
         }
     }
