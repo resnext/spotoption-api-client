@@ -62,7 +62,7 @@ class Response
                 throw new NotWhitelistedIpException($this, "Not whitelisted IP");
             }
             default: {
-                throw new ServerException($this, "Unknown SpotOption error. " . $error);
+                throw new ServerException($this, "Unknown SpotOption error. " . print_r($error, 1));
             }
         }
     }
