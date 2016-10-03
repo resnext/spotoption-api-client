@@ -57,8 +57,13 @@ class Response
     }
 
     protected function processError($error) {
-        switch ($error) {
-            case self::ERROR_COULD_NOT_VALIDATE_IP: {
+
+        if (is_array($error) && isset($error['message'])) {
+            $error = $error['message'];
+        }
+
+        switch (strtolower($error)) {
+            case strtolower(self::ERROR_COULD_NOT_VALIDATE_IP): {
                 throw new NotWhitelistedIpException($this, "Not whitelisted IP");
             }
             default: {
