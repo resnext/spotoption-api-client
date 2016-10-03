@@ -36,8 +36,15 @@ class Response
     {
         $data = $this->payload->getData();
         // Process failed operation
-        if ($data[self::FIELD_OPERATION_STATUS] == self::STATUS_FAILED) {
-            foreach ($data[self::FIELD_ERRORS] as $error) {
+        if (!isset($data[self::FIELD_OPERATION_STATUS]) || $data[self::FIELD_OPERATION_STATUS] == self::STATUS_FAILED) {
+
+            $errors = isset($data[self::FIELD_ERRORS]) ? $data[self::FIELD_ERRORS] : [];
+
+            if (empty($errors)) {
+                throw new ServerException($this, "Unknown SpotOption response.");
+            }
+
+            foreach ($errors as $error) {
                 $this->errors[] = $error;
                 $this->processError($error);
             }
