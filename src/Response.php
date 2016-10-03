@@ -58,7 +58,7 @@ class Response
 
     protected function processError($error) {
 
-        if (is_array($error) && isset($error['message'])) {
+        if (is_array($error)) {
             if (isset($error['message'])) {
                 $error = $error['message'];
             } else {
