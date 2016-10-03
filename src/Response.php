@@ -59,7 +59,13 @@ class Response
     protected function processError($error) {
 
         if (is_array($error) && isset($error['message'])) {
-            $error = $error['message'];
+            if (isset($error['message'])) {
+                $error = $error['message'];
+            } else {
+                foreach ($error as $errorMessage) {
+                    $this->processError($errorMessage);
+                }
+            }
         }
 
         switch (strtolower($error)) {
