@@ -9,13 +9,13 @@ class CountriesModuleTest extends TestCase
 {
     public function testSuccessfulResponse()
     {
-        $response = new Response(200, [], Stubs::successfulCountriesView());
+        $apiResponse = new Response(200, [], Stubs::successfulCountriesView());
 
-        $this->mockResponse($response);
+        $this->mockResponse($apiResponse);
 
-        $result = $this->apiClient->getCountries();
+        $response = $this->apiClient->getCountries();
 
-        $countries = $result->getData();
+        $countries = $response->getData();
 
         $this->assertGreaterThan(1, count($countries), "Countries array should not be empty.");
 

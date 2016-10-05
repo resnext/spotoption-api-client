@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<status><connection_status>successful</connection_status><operation_status>failed</operation_status><local>1</local><lookback_status>1</lookback_status><errors><error>emailAlreadyExists</error></errors></status>

@@ -13,4 +13,14 @@ class Stubs
     {
         return static::getStub('successfulCountriesView.xml');
     }
+
+    public static function successfulCustomerAdd()
+    {
+        return static::getStub('successfulCustomerAdd.xml');
+    }
+
+    public static function failedCustomerAdd_EmailAlreadyExists()
+    {
+        return static::getStub('failedCustomerAdd-EmailAlreadyExists.xml');
+    }
 }

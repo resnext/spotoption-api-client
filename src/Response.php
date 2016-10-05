@@ -2,6 +2,7 @@
 
 namespace SpotOption;
 
+use SpotOption\Exceptions\EmailAlreadyExistsException;
 use SpotOption\Exceptions\NotWhitelistedIpException;
 
 class Response
@@ -17,6 +18,8 @@ class Response
     const STATUS_FAILED = 'failed';
 
     const ERROR_COULD_NOT_VALIDATE_IP = 'couldNotValidateIP';
+
+    const ERROR_EMAIL_ALREADY_EXISTS = 'emailAlreadyExists';
 
     protected $errors = [];
 
@@ -71,6 +74,9 @@ class Response
         switch (strtolower($error)) {
             case strtolower(self::ERROR_COULD_NOT_VALIDATE_IP): {
                 throw new NotWhitelistedIpException($this, "Not whitelisted IP");
+            }
+            case strtolower(self::ERROR_EMAIL_ALREADY_EXISTS): {
+                throw new EmailAlreadyExistsException($this, "Email already exists");
             }
             default: {
                 throw new ServerException($this, "Unknown SpotOption error. " . print_r($error, 1));
