@@ -8,6 +8,7 @@ use GuzzleHttp;
 use SpotOption\Requests\AddCustomerRequest;
 use SpotOption\Responses\AddCustomerResponse;
 use SpotOption\Responses\GetCountriesResponse;
+use SpotOption\Responses\ValidateCustomerResponse;
 
 class ApiClient implements LoggerAwareInterface
 {
@@ -100,6 +101,22 @@ class ApiClient implements LoggerAwareInterface
         $payload = new Payload($this->request($data));
 
         return new AddCustomerResponse($payload);
+    }
+
+    public function validateCustomer($email, $password)
+    {
+        $data = [
+            'MODULE'        => 'Customer',
+            'COMMAND'       => 'validate',
+            'FILTER' => [
+                'email'     => $email,
+                'password'  => $password,
+            ]
+        ];
+
+        $payload = new Payload($this->request($data));
+
+        return new ValidateCustomerResponse($payload);
     }
 
     /**

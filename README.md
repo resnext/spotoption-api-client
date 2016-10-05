@@ -41,8 +41,15 @@ $apiClient = new \SpotOption\ApiClient(<API_URL>, <API_USERNAME>, <API_PASSWORD>
 ## Countries retrieving
 
 ```php
-/** @var \SpotOption\Response\GetCountriesResponse $response */
+/** @var \SpotOption\Responses\GetCountriesResponse $response */
 $response = $this->apiClient->getCountries();
 /** @var \SpotOption\Entities\Country[] $countries */
 $countries = $response->getData();
+```
+
+## Customer validation
+
+```php
+/** @var \SpotOption\Responses\ValidateCustomerResponse
+$response = $apiClient->validateCustomer('email@domain.com', 'password');
 ```
