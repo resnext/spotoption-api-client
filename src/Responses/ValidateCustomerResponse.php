@@ -12,7 +12,7 @@ class ValidateCustomerResponse extends Response
 
     const FIELD_AUTH_KEY = 'authKey';
 
-    const FIELD_BALANCE = 'balance';
+    const FIELD_BALANCE = 'accountBalance';
 
     /**
      * Returns Customer ID (ID of created customer in SpotOption platform)
