@@ -13,6 +13,8 @@ class GetCountriesResponse extends Response
 
     const FIELD_ISO_ALPHA_2 = 'iso';
 
+    const FIELD_REGISTRATION_ALLOWED = 'allowRegistration';
+
     /**
      * @var \SpotOption\Entities\Country[]
      */
@@ -31,7 +33,8 @@ class GetCountriesResponse extends Response
                 continue;
             }
             $id = $country[self::FIELD_ID];
-            $this->countries[] = new Country($id, $isoAlpha2);
+            $registrationAllowed = $country[self::FIELD_REGISTRATION_ALLOWED];
+            $this->countries[] = new Country($id, $isoAlpha2, $registrationAllowed);
         }
     }
 

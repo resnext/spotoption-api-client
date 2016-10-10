@@ -4,10 +4,11 @@ namespace SpotOption\Entities;
 
 class Country
 {
-    public function __construct($id, $isoAlpha2)
+    public function __construct($id, $isoAlpha2, $registrationAllowed)
     {
         $this->id = $id;
         $this->isoAlpha2 = $isoAlpha2;
+        $this->registrationAllowed = $registrationAllowed;
     }
 
     /**
@@ -30,7 +31,14 @@ class Country
         return $this->isoAlpha2;
     }
 
+    public function getIsRegistrationAllowed()
+    {
+        return (boolean) $this->registrationAllowed;
+    }
+
     protected $id;
 
     protected $isoAlpha2;
+
+    protected $registrationAllowed = null;
 }

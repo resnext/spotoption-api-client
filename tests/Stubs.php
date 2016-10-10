@@ -9,9 +9,9 @@ class Stubs
         return file_get_contents(__DIR__.DIRECTORY_SEPARATOR.'stubs'.DIRECTORY_SEPARATOR.$file);
     }
 
-    public static function successfulCountriesView()
+    public static function successfulCountryView()
     {
-        return static::getStub('successfulCountriesView.xml');
+        return static::getStub('successfulCountryView.xml');
     }
 
     public static function successfulCustomerAdd()
