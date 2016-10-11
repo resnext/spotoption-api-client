@@ -5,8 +5,10 @@ namespace SpotOption;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use GuzzleHttp;
+use SpotOption\Entities\Campaign;
 use SpotOption\Requests\AddCustomerRequest;
 use SpotOption\Responses\AddCustomerResponse;
+use SpotOption\Responses\GetCampaignsResponse;
 use SpotOption\Responses\GetCountriesResponse;
 use SpotOption\Responses\ValidateCustomerResponse;
 
@@ -73,6 +75,27 @@ class ApiClient implements LoggerAwareInterface
         return new GetCountriesResponse($payload);
     }
 
+    /**
+     * @param string $type
+     *
+     * @return GetCampaignsResponse
+     */
+    public function getCampaigns($type = Campaign::TYPE_CPA)
+    {
+        $data = [
+            'MODULE'  => 'Campaign',
+            'COMMAND' => 'view',
+            'FILTER' => [
+                'type' => $type,
+            ]
+        ];
+
+        $payload = new Payload($this->request($data));
+
+        $response = new GetCampaignsResponse($payload);
+
+        return $response;
+    }
 
     public function addCustomer(AddCustomerRequest $request)
     {

@@ -47,6 +47,16 @@ $response = $this->apiClient->getCountries();
 $countries = $response->getData();
 ```
 
+## Campaigns retrieving
+
+This example retrieves all campaign with type CPA.
+```php
+/** @var \SpotOption\Responses\GetCampaigns $response */
+$response = $this->apiClient->getCampaigns(\SpotOption\Entities\Campaign::TYPE_CPA);
+/** @var \SpotOption\Entities\Campaign[] $countries */
+$countries = $response->getData();
+```
+
 ## Customer validation
 
 ```php

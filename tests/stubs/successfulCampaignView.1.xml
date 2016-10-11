@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<status><connection_status>successful</connection_status><operation_status>successful</operation_status>
+    <Campaign>
+        <data_0>
+            <id>123</id>
+            <name>Campaign name</name>
+            <startDate>23/08/16</startDate>
+            <endDate>23/08/16</endDate>
+            <type>CPA</type>
+            <country>Any</country>
+            <cookieTimeout>31536000</cookieTimeout>
+            <budget>0</budget>
+            <leadsNum>0</leadsNum>
+            <CPL/>
+            <customersNum>706</customersNum>
+            <CPA>0</CPA>
+            <visitsNum>0</visitsNum>
+            <uniqueVisits>0</uniqueVisits>
+            <totalDeposits>123456</totalDeposits>
+            <visitorCode/>
+            <leadCode/>
+            <customerCode/>
+            <playerCode/>
+            <playerCodeOnlyForFTD>0</playerCodeOnlyForFTD>
+            <playerCodeFireServer>0</playerCodeFireServer>
+            <customerCodeFireServer>0</customerCodeFireServer>
+            <leadCodeFireServer>0</leadCodeFireServer>
+            <visitorCodeFireServer>0</visitorCodeFireServer>
+            <playerCodeDepositThreshold>0</playerCodeDepositThreshold>
+        </data_0>
+    </Campaign>
+</status>

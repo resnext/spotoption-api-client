@@ -14,6 +14,11 @@ class Stubs
         return static::getStub('successfulCountryView.xml');
     }
 
+    public static function successfulCampaignView1()
+    {
+        return static::getStub('successfulCampaignView.1.xml');
+    }
+
     public static function successfulCustomerAdd()
     {
         return static::getStub('successfulCustomerAdd.xml');

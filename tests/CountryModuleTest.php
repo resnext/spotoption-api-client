@@ -33,7 +33,5 @@ class CountryModuleTest extends TestCase
             $this->assertGreaterThan(0, $country->getId());
             $this->assertEquals(2, strlen($country->getIsoAlpha2()));
         }
-
-        $this->assertTrue(true);
     }
 }
