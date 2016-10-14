@@ -12,6 +12,8 @@ class Payload implements \ArrayAccess, \JsonSerializable
      */
     protected $data;
 
+    protected $rawData = null;
+
     /**
      * Creates a new payload object from string.
      *
@@ -19,6 +21,8 @@ class Payload implements \ArrayAccess, \JsonSerializable
      */
     public function __construct($xml)
     {
+        $this->rawData = $xml;
+
         $data = @simplexml_load_string($xml);
 
         if ($data === false) {
@@ -126,5 +130,10 @@ class Payload implements \ArrayAccess, \JsonSerializable
     public function __toString()
     {
         return $this->toJson();
+    }
+
+    public function getRawData()
+    {
+        return $this->rawData;
     }
 }

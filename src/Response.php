@@ -7,6 +7,9 @@ use SpotOption\Exceptions\NotWhitelistedIpException;
 
 class Response
 {
+    /**
+     * @var \SpotOption\Payload
+     */
     protected $payload;
 
     const FIELD_CONNECTION_STATUS = 'connection_status';
@@ -98,5 +101,10 @@ class Response
     {
 
         return is_array($data) ? array_shift($data) : $data;
+    }
+
+    public function getPayload()
+    {
+        return $this->payload;
     }
 }

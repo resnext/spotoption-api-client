@@ -153,6 +153,26 @@ class AddCustomerRequest extends Request
         return $this->registrationIpAddress;
     }
 
+    /**
+     * If the registrant is compliant with regulation. Can be: ‘none’,’pending’,’suspend’,’approve’
+     *
+     * @return string
+     */
+    public function getRegulateStatus()
+    {
+        return $this->regulateStatus;
+    }
+
+    /**
+     * The type of regulation
+     *
+     * @return int
+     */
+    public function getRegulateType()
+    {
+        return $this->regulateType;
+    }
+
     protected $firstName;
     protected $lastName;
     protected $gender = 'male';
@@ -171,4 +191,18 @@ class AddCustomerRequest extends Request
     protected $aBid;
     protected $aCid;
     protected $registrationIpAddress;
+
+    /**
+     * If the registrant is compliant with regulation. Can be: ‘none’,’pending’,’suspend’,’approve’
+     *
+     * @var string
+     */
+    protected $regulateStatus;
+
+    /**
+     * The type of regulation
+     *
+     * @var int
+     */
+    protected $regulateType;
 }

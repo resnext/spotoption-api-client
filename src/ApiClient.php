@@ -121,6 +121,14 @@ class ApiClient implements LoggerAwareInterface
             'regIP' => $request->getRegistrationIpAddress(),
         ];
 
+        if ($request->getRegulateStatus() !== null) {
+            $data['regulateStatus'] = $request->getRegulateStatus();
+        }
+
+        if ($request->getRegulateType() !== null) {
+            $data['regulateType'] = $request->getRegulateType();
+        }
+
         $payload = new Payload($this->request($data));
 
         return new AddCustomerResponse($payload);
