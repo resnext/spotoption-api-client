@@ -47,6 +47,6 @@ class AddCustomerResponse extends Response
         parent::init();
         $data = $this->payload->getData();
         $this->id = $data[self::DATA_FIELD][self::FIELD_ID];
-        $this->authKey = $data[self::DATA_FIELD][self::FIELD_AUTH_KEY];
+        $this->authKey = isset($data[self::DATA_FIELD][self::FIELD_AUTH_KEY]) ? $data[self::DATA_FIELD][self::FIELD_AUTH_KEY] : null;
     }
 }
