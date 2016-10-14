@@ -28,4 +28,9 @@ class Stubs
     {
         return static::getStub('failedCustomerAdd-EmailAlreadyExists.xml');
     }
+
+    public static function errorNoPermissions()
+    {
+        return static::getStub('error-noPermissions.xml');
+    }
 }

@@ -3,6 +3,7 @@
 namespace SpotOption;
 
 use SpotOption\Exceptions\EmailAlreadyExistsException;
+use SpotOption\Exceptions\NoPermissionsException;
 use SpotOption\Exceptions\NotWhitelistedIpException;
 
 class Response
@@ -19,6 +20,8 @@ class Response
     const FIELD_ERRORS = 'errors';
 
     const STATUS_FAILED = 'failed';
+
+    const ERROR_NO_PERMISSIONS = 'noPermissions';
 
     const ERROR_COULD_NOT_VALIDATE_IP = 'couldNotValidateIP';
 
@@ -80,6 +83,9 @@ class Response
             }
             case strtolower(self::ERROR_EMAIL_ALREADY_EXISTS): {
                 throw new EmailAlreadyExistsException($this, "Email already exists");
+            }
+            case strtolower(self::ERROR_NO_PERMISSIONS): {
+                throw new NoPermissionsException($this, "No permissions");
             }
             default: {
                 throw new ServerException($this, "Unknown SpotOption error. " . print_r($error, 1));

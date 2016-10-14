@@ -14,7 +14,7 @@ use SpotOption\ServerException;
  * Some misunderstanding may be exists when brand have added you external IPv4 address but your server used IPv6.
  * Some brands have not AAAA records for their domain which contains SpotOption platform and some brands have AAAA recs.
  *
- * Class DisabledIpAddress
+ * Class NotWhitelistedIpException
  * @package SpotOption\Exceptions
  */
 class NotWhitelistedIpException extends ServerException
