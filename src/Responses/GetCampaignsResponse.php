@@ -3,6 +3,7 @@
 namespace SpotOption\Responses;
 
 use SpotOption\Entities\Campaign;
+use SpotOption\Exceptions\NoResultsException;
 use SpotOption\Response;
 
 class GetCampaignsResponse extends Response
@@ -16,7 +17,11 @@ class GetCampaignsResponse extends Response
 
     protected function init()
     {
-        parent::init();
+        try {
+            parent::init();
+        } catch (NoResultsException $e) {
+            return true;
+        }
 
         $data = $this->payload->getData();
 

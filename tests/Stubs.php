@@ -33,4 +33,9 @@ class Stubs
     {
         return static::getStub('error-noPermissions.xml');
     }
+
+    public static function noResults()
+    {
+        return static::getStub('noResults.xml');
+    }
 }

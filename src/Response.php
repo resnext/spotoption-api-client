@@ -4,6 +4,7 @@ namespace SpotOption;
 
 use SpotOption\Exceptions\EmailAlreadyExistsException;
 use SpotOption\Exceptions\NoPermissionsException;
+use SpotOption\Exceptions\NoResultsException;
 use SpotOption\Exceptions\NotWhitelistedIpException;
 
 class Response
@@ -26,6 +27,8 @@ class Response
     const ERROR_COULD_NOT_VALIDATE_IP = 'couldNotValidateIP';
 
     const ERROR_EMAIL_ALREADY_EXISTS = 'emailAlreadyExists';
+
+    const ERROR_NO_RESULTS = 'noResults';
 
     protected $errors = [];
 
@@ -78,6 +81,9 @@ class Response
         }
 
         switch (strtolower($error)) {
+            case strtolower(self::ERROR_NO_RESULTS): {
+                throw new NoResultsException($this, "No results");
+            }
             case strtolower(self::ERROR_COULD_NOT_VALIDATE_IP): {
                 throw new NotWhitelistedIpException($this, "Not whitelisted IP");
             }

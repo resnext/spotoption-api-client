@@ -3,7 +3,6 @@
 namespace SpotOption\Tests;
 
 use GuzzleHttp\Psr7\Response;
-use SpotOption\Entities\Campaign;
 
 class CampaignModuleTest extends TestCase
 {
@@ -26,5 +25,19 @@ class CampaignModuleTest extends TestCase
         $this->assertEquals('CPA', $campaign->getType());
         $this->assertEquals('Any', $campaign->getCountry());
         $this->assertEquals(123456, $campaign->getTotalDeposits());
+    }
+
+    public function testNoResultsResponse()
+    {
+        $apiResponse = new Response(200, [], Stubs::noResults());
+
+        $this->mockResponse($apiResponse);
+
+        $response = $this->apiClient->getCampaigns();
+
+        $campaigns = $response->getData();
+
+        $this->assertTrue(is_array($campaigns));
+        $this->assertEquals(0, count($campaigns));
     }
 }
