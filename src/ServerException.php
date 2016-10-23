@@ -7,7 +7,7 @@ namespace SpotOption;
  * server received message about something is wrong.
  *
  * Class Exception
- * @package Solaris
+ * @package SpotOption
  */
 class ServerException extends \Exception
 {

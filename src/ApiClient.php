@@ -33,7 +33,7 @@ class ApiClient implements LoggerAwareInterface
     /**
      * ApiClient constructor.
      *
-     * @param string $url Solaris API endpoint.
+     * @param string $url SpotOption API endpoint.
      * @param string $username
      * @param string $password
      * @param mixed  $options
@@ -162,7 +162,7 @@ class ApiClient implements LoggerAwareInterface
     }
 
     /**
-     * Sends request to Solaris API endpoint.
+     * Sends request to SpotOption API endpoint.
      *
      * @param array  $data
      *
