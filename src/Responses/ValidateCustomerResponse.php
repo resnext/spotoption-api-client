@@ -54,7 +54,7 @@ class ValidateCustomerResponse extends Response
         parent::init();
         $data = $this->payload->getData();
         $this->id = intval($data[self::DATA_FIELD][self::FIELD_ID]);
-        $this->authKey = $data[self::DATA_FIELD][self::FIELD_AUTH_KEY];
-        $this->balance = floatval($data[self::DATA_FIELD][self::FIELD_BALANCE]);
+        $this->authKey = isset($data[self::DATA_FIELD][self::FIELD_AUTH_KEY]) ? $data[self::DATA_FIELD][self::FIELD_AUTH_KEY] : null;
+        $this->balance = isset($data[self::DATA_FIELD][self::FIELD_BALANCE]) ? floatval($data[self::DATA_FIELD][self::FIELD_BALANCE]) : null;
     }
 }
